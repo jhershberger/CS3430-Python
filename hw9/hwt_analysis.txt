@@ -1,0 +1,36 @@
+Data Set 1:
+
+Here is the results from the hwt:
+
+  Original signal: [10.0, 12.0, 12.0, 7.0, 8.0, 9.1, 8.2, 9.4, 16.0, 15.0, 13.0, 11.0, 6.4, 9.0, 19.0, 118.0]
+  Ord FHWT  : [17.69375, -8.23125, 0.7874999999999996, -12.175, 0.75, -0.125, 1.75, -30.4, -1.0, 2.5, -0.5499999999999998, -0.60000
+  00000000005, 0.5, 1.0, -1.2999999999999998, -49.5]
+
+  The hwt constant is -2. Using this we can evaluate the results of the hwt to gain a deeper knowldege
+  of the changes in the data about the river flow in cm^3 from December 1992 to January 1993.
+
+Here is the summary of the data:
+    The semi-weekly measurements of river flow, in cubic feet per second, cover the period
+  of December 1992 to January 1993. The measurements are not exact, they are only approximations.
+  They are accurate approximations but are not exact. The average river flow from December '92 to
+  January '93 is 17.69 cm^3. The river flow's volume increased from December to January by 16.46 cm^3.
+  From the 1st half of December '92 to the second half, the river flow decreased slightly by a margin
+  of 1.57 cm^3. From the first half of January to the second half of January, the river flow increased
+  by a margin of 24.35 cm^3. The river flow slightly decreased between the periods of the first quarter
+  of December '92 to the second quarter by a margin of 1.5 cm^3. The change in river flow between the
+  third quarter of December to the fourth quarter was a decrease by a margin of 0.25. The quarterly
+  changes in river flow for January '93 are: from first to second: a decrease by 3.5 cm^3; from third
+  to fourth: a decent increase by 60.8 cm^3. Now for the weekly changes in river flow for each month.
+  December '92: Week 1: an increase by 2 cm^3; Week 2: a decrease by 5 cm^3; Week 3: an increase of 1.1 cm^3;
+  Week 4: an increase by 1.2 cm^3. January '93: Week 1: a decrease by 1 cm^3; Week 2: a decrease by 2 cm^3;
+  Week 3: an increase of 2.6 cm^3; Week 4: a big increase of 99 cm^3!
+
+
+
+Data Set 2:
+
+  The measurements of degrees Celsius in the Langstroth beehive are from 12:23 July 26, 2016 to 17:54
+on August 9, 2016. The average temperature over this period is 28.79 degrees Celsius. The change in temp
+from the first half of the period to the second half of the period is a decrease by about 1.1 degrees Celsius
+The change in temperature from the first quarter to the second quarter is a decrease by about 0.59 degrees Celsius.
+The change in temperature from the third quarter to the fourth quarter is an increase by roughly 1.2 degrees Celsius.

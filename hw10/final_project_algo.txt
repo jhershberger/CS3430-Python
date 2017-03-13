@@ -1,0 +1,99 @@
+Justin Hershberger 
+A01381222
+11/19/16
+
+	There are five ways to classify a frame for each frame in DronePix.zip:
+SOUTH_END_LANE, LANE, CROSS(intersection), NORTH_END_LANE, or CARPET. To be able
+to detect each one, I will definitely need to consider the degree of angles between
+lines as we did in ht_detect_lanes.py. To detect a single lane will not be that bad,
+but detecting a lane end or a lane cross can be a little trickier. 
+
+	I will use the same approach as in exam 2 and ht_detect_lanes.py, which are the 
+methods we have covered in class. I will first read in an image, convert it to grayscale,
+blur it, threshold it, and then detect all the edges in it. After this is done, I will 
+detect the lines in the image using Hough transform. Once I have the lines detected, I 
+can start to measure the degree of angles between the lines in order to determine what 
+type of lanes are in the image.
+
+	A single horizontal lane will have angles between the lines of about -15 degrees to
+15 degrees since a horizontal line has a degree of 0. The range is to allow for some 
+leniancy as lane detection is not a perfect process. I will approach vertical lanes,
+the same way but with a range close to 90 degrees between the lines. If I only detect
+one of either a horizontal, or vertical lane, then we know that we can classify the frame
+as a single lane. 
+
+	To detect a lane end, we can compare the lane's length to that of max length of the image.
+The diagonal is the overall max length and we can check the vertical and horizontal lengths
+of the image. If we detect a lane and it's length is less than all three of the image's max
+lengths then we know that it must be a lane end. A lane end must occur if there is only one
+lane detected in the frame and it's length is less than the max values described above. To 
+determine whether or not the lane end is north or south, we can look at the end points and 
+compare them to the origin. If they are closer to the origin than the end of the image then
+the lane end is north and vice versa for south.
+
+	To detect a cross, we will be able to detect at least one horizontal and one vertical 
+lane in the frame. We can keep a counter of how many lanes we detect in each frame and if 
+we detect at least one of each, then we can check the coordinates of each lane's line and
+if there is an intersection, then the coordinates will be the same. Another way to think 
+of this is that the distance between the points that are in both lanes will be 0 at the point
+of intersection.
+
+	To detect only carpet, I will use the RGB filter. This method will work great for detecting 
+carpet since the entire image will return the same result since the carpet is the same color and
+there are no lanes to be detected. To check this, we can check the result of max_rgb_filter and
+if there is no change throughout the image, then we have detected carpet.
+
+	My pseudo-code:
+		def line_deg_angle(x1,y1,x2,y2):
+			compute the angle between the points
+			
+		def detect_horizontal_lane(lines):
+			for each line in lines:
+				check the degree for horizontal lines
+				if horizontal
+					horizontal_lines++
+					
+		def detect_vert_lane(lines):
+			for each line in lines:
+				check vertical degree constraints
+				if it passes
+					vert_lines++
+					
+		def detect_lane_cross(lines):
+			for each line in lines
+				if we detect both a horizontal and vert line 
+					for each coordinate in horizontal_line and vertical_line
+						return true 
+		
+		def detect_lane_end(lines):
+			if detect_horizontal_lane(lines)
+				for each line in lines
+					if length of line less than height, width, diag of image
+						if x1,y1,x2,y2 distance to origin is less than distance to image edge 
+							return north lane end
+						else 
+							return south lane end 
+							
+		def detect carpet(lines):
+			if no lane detection and RGB is the same throughout the image
+				return true 
+				
+		def classify_frame:
+			image = cv2.imread(image_path) ## read the image
+			gray  = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) ## grayscale
+			edges = cv2.Canny(gray, 50, 150, apertureSize=3) ## detect edges
+			lines = cv2.HoughLinesP(edges, 1, numpy.pi/180, 100, 20, 10) ## detect hough lines
+			
+			for each frame in image:
+				if detect_horizontal_lane
+				elif detect_lane_cross
+				elif detect_lane_end
+				elif detect_vert_lane
+				elif detect carpet 
+				return which ones were true
+			
+			
+		def main(imgdir, filepat):
+			for path,dirlist,filelist in os.walk(imgdir):
+				for filename in match for file pattern
+					classify_frame(filename)

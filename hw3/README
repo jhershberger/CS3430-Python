@@ -1,0 +1,11 @@
+A couple of notes for my source code:
+  1) to sort the sorted_rand_poly_dance completely, I used list comprehension to
+     make a list of each tuple containing a polynomial for each x rather than having
+     a list of lists of those tuples. This means that the display_poly_maps function
+     won't work for the resulting list from sorted_rand_poly_dance so I created a new
+     function to display it: display_sorted_polys
+
+  2) For map_polys, the numbers parameter needs to be a sequence such as (range, xrange, or [0,4]) but
+     there will be an error if xvals is just a single integer since it xvals is passed to map_polys as numbers
+
+Thanks!

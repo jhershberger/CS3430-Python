@@ -1,0 +1,19 @@
+End of Assignment ?'s
+
+1) As the number of nodes in a binary search tree goes to infinity,
+   what is the probability of a binary search tree being a list?
+
+   Judging by the data from our probability tests, as the number of nodes increases, the chances of a
+   tree being a list is 0%. As the number of nodes approaches infinity, the probability of a tree being
+   a list approaches 0
+
+2) As the number of nodes in a binary search tree goes to infinity,
+  what is the probability of a binary search tree being balanced?
+
+  This one is interesting. The tests that we run for the probability of a tree
+  being balanced as the number of nodes approaches infinity appear to have a relatively similar
+  probability with a low variance. Although as the number of nodes increases, the probability
+  of having a balanced tree does go down, it doesn't seem to go to zero.
+  From 100 to 200 nodes, the probability changes by .03. This isn't a big variance at all
+  This leads me to think that with infinite nodes, the odds are close to 0.10. It seems
+  like a series that converges on a number close to 0.10. 
